@@ -9,32 +9,38 @@
         <h2><strong>Make</strong> Transfer</h2>
       </header>
       <div class="generic-component__inner">
-        <app-textfield
-          label="From Account"
-          value="My Personal Account: $55824.76"
-          [formControl]="transferFrom"
-          [disabled]="true"
-          name="transferFrom"
-          ngDefaultControl
-        ></app-textfield>
+        <form [formGroup]="makeTransfer" #ngForm="ngForm">
+          <app-textfield
+            label="From Account"
+            value="My Personal Account: € 5824.76"
+            [formControl]="transferFrom"
+            [ngForm]="ngForm"
+            [disabled]="transferFrom.disabled"
+            name="transferFrom"
+            ngDefaultControl
+          ></app-textfield>
 
-        <app-textfield
-          label="To Account"
-          placeholder="type an account name"
-          [formControl]="transferTo"
-          name="transferTo"
-          ngDefaultControl
-        ></app-textfield>
+          <app-textfield
+            label="To Account"
+            placeholder="type an account name"
+            [formControl]="transferTo"
+            [ngForm]="ngForm"
+            name="transferTo"
+            ngDefaultControl
+          ></app-textfield>
 
-        <app-textfield
-          label="Amount"
-          placeholder="specify the amount"
-          [formControl]="transferTo"
-          name="transferTo"
-          ngDefaultControl
-          helperTextLeft="$"
-        ></app-textfield>
-        <app-submit-button></app-submit-button>
+          <app-textfield
+            label="Amount"
+            placeholder="specify the amount"
+            [formControl]="transferAmount"
+            [ngForm]="ngForm"
+            name="transferAmount"
+            ngDefaultControl
+            helperTextLeft="€"
+            [pattern]="currencyRegex"
+          ></app-textfield>
+          <app-submit-button></app-submit-button>
+        </form>
       </div>
     </aside>
 

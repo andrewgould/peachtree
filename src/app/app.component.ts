@@ -3,6 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  NgForm,
   Validators,
 } from '@angular/forms';
 
@@ -14,14 +15,19 @@ import {
 })
 export class AppComponent implements OnInit {
   title = 'peachtree';
+  currencyRegex: RegExp =
+    /^[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$/;
 
   makeTransfer: FormGroup;
-  transferFrom = new FormControl(
-    { value: 'My Personal Account: $55824.76', disabled: true },
-    Validators.required
-  );
+  transferFrom = new FormControl({
+    value: 'My Personal Account: € 5824.76',
+    disabled: true,
+  });
   transferTo = new FormControl('', Validators.required);
-  transferAmount = new FormControl('', Validators.required);
+  transferAmount = new FormControl('', [
+    Validators.required,
+    Validators.pattern(this.currencyRegex),
+  ]);
 
   constructor(private readonly fb: FormBuilder) {}
 
@@ -31,15 +37,9 @@ export class AppComponent implements OnInit {
 
   createForm() {
     this.makeTransfer = this.fb.group({
-      transferFrom: [
-        { value: 'My Personal Account: $55824.76', disabled: true },
-        [Validators.required],
-      ],
-      transferTo: [null, [Validators.required]],
-      transferAmount: [
-        null,
-        [Validators.required, Validators.pattern(/^[0-9]{4}$/)],
-      ],
+      transferFrom: this.transferFrom,
+      transferTo: this.transferTo,
+      transferAmount: this.transferAmount,
     });
   }
 }

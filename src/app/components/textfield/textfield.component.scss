@@ -38,6 +38,10 @@
     box-shadow: 0 0 3px $colour_blue-brand;
     outline: none;
   }
+
+  &.ng-touched.ng-invalid {
+    border-color: red;
+  }
 }
 
 .app-textfield__helper-text-left {
@@ -58,4 +62,11 @@
   + .app-textfield__input-field {
     padding-left: 45px;
   }
+}
+
+.app-textfield__invalid-feedback {
+  color: #f00;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 10px 0;
 }

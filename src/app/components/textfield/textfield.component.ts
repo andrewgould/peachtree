@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ControlValueAccessor, FormControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: './textfield.component.html',
@@ -13,9 +13,11 @@ export class TextfieldComponent implements ControlValueAccessor {
   @Input() helperTextRight = '';
   @Input() value: string = '';
   @Input() formControl: FormControl;
+  @Input() ngForm: NgForm;
   @Input() name = '';
   @Input() type = 'text';
   @Input() placeholder = '';
+  @Input() pattern: RegExp | undefined;
 
   registerOnChange(fn: any): void {}
 

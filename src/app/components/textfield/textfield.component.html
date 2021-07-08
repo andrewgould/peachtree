@@ -14,6 +14,14 @@
       [disabled]="disabled"
       [attr.id]="name"
       [attr.placeholder]="placeholder"
+      [pattern]="pattern"
+      [ngModel]="value"
     />
   </div>
+  <p
+    *ngIf="ngForm.submitted && formControl.errors?.required"
+    class="app-textfield__invalid-feedback"
+  >
+    This field is required
+  </p>
 </div>
