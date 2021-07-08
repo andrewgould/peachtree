@@ -15,23 +15,16 @@
 
 .generic-component {
   padding: 0 15px;
-  width: 730px;
+  width: 760px;
+
   &--sidebar {
-    width: 350px;
+    width: 380px;
   }
 
   &__inner {
     background: #fff;
     border-radius: 0 0 8px 8px;
     padding: 20px;
-
-    h3 {
-      font-size: 14px;
-      font-weight: 400;
-      &:first-of-type {
-        margin-top: 0;
-      }
-    }
   }
 
   &__header {
@@ -47,9 +40,25 @@
       font-size: 18px;
       font-weight: 400;
       margin: 0;
+
       strong {
         font-weight: 600;
       }
+    }
+  }
+
+  app-submit-button {
+    display: block;
+    text-align: right;
+    button {
+      background: $colour_orange-button_background;
+      border: 1px solid $colour_orange-button_border;
+      border-radius: 4px;
+      color: #fff;
+      font-family: $font-stack;
+      font-size: 14px;
+      height: 38px;
+      padding: 0 12px;
     }
   }
 }

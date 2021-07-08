@@ -1,1 +1,19 @@
-<input />
+<div class="app-textfield">
+  <label class="app-textfield__label" [for]="name" *ngIf="name && label">{{
+    label
+  }}</label>
+  <div class="app-textfield__input">
+    <div *ngIf="helperTextLeft" class="app-textfield__helper-text-left">
+      {{ helperTextLeft }}
+    </div>
+    <input
+      class="app-textfield__input-field"
+      #focus
+      [type]="type"
+      [value]="value"
+      [disabled]="disabled"
+      [attr.id]="name"
+      [attr.placeholder]="placeholder"
+    />
+  </div>
+</div>

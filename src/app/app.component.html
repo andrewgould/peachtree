@@ -1,5 +1,6 @@
 <header>
   <app-logo></app-logo>
+  <h1>Frontend <strong>Technical Assignment</strong></h1>
 </header>
 <main>
   <div class="container">
@@ -8,17 +9,32 @@
         <h2><strong>Make</strong> Transfer</h2>
       </header>
       <div class="generic-component__inner">
-        <form>
-          <h3>From Account</h3>
-          <input [disabled]="true" value="My Personal Account: $55824.76" />
+        <app-textfield
+          label="From Account"
+          value="My Personal Account: $55824.76"
+          [formControl]="transferFrom"
+          [disabled]="true"
+          name="transferFrom"
+          ngDefaultControl
+        ></app-textfield>
 
-          <h3>To Account</h3>
-          <input placeholder="type an account name" />
+        <app-textfield
+          label="To Account"
+          placeholder="type an account name"
+          [formControl]="transferTo"
+          name="transferTo"
+          ngDefaultControl
+        ></app-textfield>
 
-          <h3>Amount</h3>
-          <input placeholder="specify the amount" />
-          <app-submit-button></app-submit-button>
-        </form>
+        <app-textfield
+          label="Amount"
+          placeholder="specify the amount"
+          [formControl]="transferTo"
+          name="transferTo"
+          ngDefaultControl
+          helperTextLeft="$"
+        ></app-textfield>
+        <app-submit-button></app-submit-button>
       </div>
     </aside>
 

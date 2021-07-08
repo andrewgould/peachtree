@@ -1,5 +1,5 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, FormControl } from '@angular/forms';
 
 @Component({
   templateUrl: './textfield.component.html',
@@ -7,9 +7,15 @@ import { ControlValueAccessor } from '@angular/forms';
   selector: 'app-textfield',
 })
 export class TextfieldComponent implements ControlValueAccessor {
+  @Input() label: string = '';
   @Input() disabled = false;
   @Input() helperTextLeft = '';
   @Input() helperTextRight = '';
+  @Input() value: string = '';
+  @Input() formControl: FormControl;
+  @Input() name = '';
+  @Input() type = 'text';
+  @Input() placeholder = '';
 
   registerOnChange(fn: any): void {}
 

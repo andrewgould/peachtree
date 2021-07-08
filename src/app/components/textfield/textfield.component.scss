@@ -1,52 +1,61 @@
 @import "../../../styles/variables";
 
-.container {
-  display: flex;
-  margin: 0 auto;
-  //max-width: 1110px;
-  max-width: 1140px;
-  width: 100%;
-  // 30px between items
-  // 66px tall headers
-
-  // 350px item 1
-  // 730px item 2
+.app-textfield {
+  display: block;
+  margin: 0 0 20px;
 }
 
-.generic-component {
-  padding: 0 15px;
-  width: 730px;
-  &--sidebar {
-    width: 350px;
+.app-textfield__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 15px;
+}
+
+.app-textfield__input {
+  position: relative;
+}
+.app-textfield__input-field {
+  border: 1px solid $colour_grey-border;
+  border-radius: 4px;
+  color: $colour_grey-input_text;
+  font-family: $font-stack;
+  height: 35px;
+  padding: 0 0 0 12px;
+  width: 310px;
+
+  &[disabled] {
+    background-color: $colour_grey-disabled;
+    color: $colour_grey-input_disabled;
   }
 
-  &__inner {
-    background: #fff;
-    border-radius: 0 0 8px 8px;
-    padding: 0.1px 20px;
-
-    h3 {
-      font-size: 14px;
-      font-weight: 400;
-    }
+  &::placeholder {
+    font-style: italic;
   }
 
-  &__header {
-    align-items: center;
-    background-color: $colour-blue-brand;
-    border-radius: 8px 8px 0 0;
-    color: #fff;
-    display: flex;
-    height: 66px;
-    padding-left: 18px;
+  &:focus {
+    border-color: $colour_blue-brand;
+    box-shadow: 0 0 3px $colour_blue-brand;
+    outline: none;
+  }
+}
 
-    h2 {
-      font-size: 18px;
-      font-weight: 400;
-      margin: 0;
-      strong {
-        font-weight: 600;
-      }
-    }
+.app-textfield__helper-text-left {
+  align-items: center;
+  background: $colour_grey-disabled;
+  border-radius: 4px 0 0 4px;
+  border-right: 1px solid $colour_grey-border;
+  display: flex;
+  font-size: 12px;
+  height: 33px;
+  justify-content: center;
+  left: 1px;
+  pointer-events: none;
+  position: absolute;
+  top: 1px;
+  width: 32px;
+
+  + .app-textfield__input-field {
+    padding-left: 45px;
   }
 }
