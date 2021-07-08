@@ -6,6 +6,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
+import { faList, faWallet } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,9 @@ export class AppComponent implements OnInit {
   title = 'peachtree';
   currencyRegex: RegExp =
     /^[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$/;
+
+  faList = faList;
+  faWallet = faWallet;
 
   makeTransfer: FormGroup;
   transferFrom = new FormControl({
