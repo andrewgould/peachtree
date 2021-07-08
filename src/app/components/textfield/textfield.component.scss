@@ -1,0 +1,52 @@
+@import "../../../styles/variables";
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  //max-width: 1110px;
+  max-width: 1140px;
+  width: 100%;
+  // 30px between items
+  // 66px tall headers
+
+  // 350px item 1
+  // 730px item 2
+}
+
+.generic-component {
+  padding: 0 15px;
+  width: 730px;
+  &--sidebar {
+    width: 350px;
+  }
+
+  &__inner {
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    padding: 0.1px 20px;
+
+    h3 {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  &__header {
+    align-items: center;
+    background-color: $colour-blue-brand;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+    display: flex;
+    height: 66px;
+    padding-left: 18px;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 400;
+      margin: 0;
+      strong {
+        font-weight: 600;
+      }
+    }
+  }
+}

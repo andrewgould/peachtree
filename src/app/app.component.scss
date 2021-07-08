@@ -1,0 +1,52 @@
+@import "../styles/reset";
+@import "../styles/variables";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap");
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+app-root {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  > header {
+    border-bottom: 1px solid $colour_grey-border;
+    padding: 24px;
+  }
+}
+main {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  margin: 0;
+  min-height: 100px;
+  padding: 60px 0;
+  position: relative;
+
+  &::before {
+    background-image: url(/assets/background.jpg);
+    background-size: cover;
+    background-position: center;
+    content: " ";
+    filter: blur(4px);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1110px;
+  width: 100%;
+
+  // 30px between items
+  // 66px tall headers
+}
+
+@import "pages/overview/overview.component";
