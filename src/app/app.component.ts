@@ -7,6 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { faList, faWallet } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
+import { TransactionsService } from './services/transactions.service';
+import { Transaction } from './models/transaction.model';
 
 @Component({
   selector: 'app-root',
@@ -33,10 +36,16 @@ export class AppComponent implements OnInit {
     Validators.pattern(this.currencyRegex),
   ]);
 
-  constructor(private readonly fb: FormBuilder) {}
+  transactions$: Observable<Transaction[]>;
+
+  constructor(
+    private readonly fb: FormBuilder,
+    private transactionsService: TransactionsService
+  ) {}
 
   ngOnInit() {
     this.createForm();
+    this.transactions$ = this.transactionsService.getTransactions();
   }
 
   createForm() {

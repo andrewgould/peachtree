@@ -55,7 +55,46 @@
       </header>
       <div class="generic-component__inner">
         <app-filter></app-filter>
-        <app-transaction-item></app-transaction-item>
+        <app-transaction-item *ngFor="let transaction of transactions$ | async">
+          <div
+            class="app-transaction-item__colour"
+            data-test-hook="transactionColour"
+            [style.background-color]="transaction.categoryCode"
+          ></div>
+          <div
+            class="app-transaction-item__date"
+            data-test-hook="transactionDate"
+          >
+            {{ transaction.dates.valueDate | date: "MMM d" }}
+          </div>
+          <div
+            class="app-transaction-item__details-merchant"
+            data-test-hook="transactionMerchantName"
+          >
+            {{ transaction.merchant.name }}
+          </div>
+          <div
+            class="app-transaction-item__details-type"
+            data-test-hook="transactionType"
+          >
+            {{ transaction.transaction.type }}
+          </div>
+          <div
+            class="app-transaction-item__amount"
+            data-test-hook="transactionAmount"
+            [ngClass]="{
+              'app-transaction-item__amount--credit':
+                transaction.transaction.creditDebitIndicator === 'CRDT',
+              'app-transaction-item__amount--debit':
+                transaction.transaction.creditDebitIndicator === 'DBIT'
+            }"
+          >
+            {{
+              transaction.transaction.amountCurrency.amount
+                | currency: transaction.transaction.amountCurrency.currencyCode
+            }}
+          </div>
+        </app-transaction-item>
       </div>
     </section>
   </div>
