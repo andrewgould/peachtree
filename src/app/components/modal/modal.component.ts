@@ -15,15 +15,6 @@ export class ModalComponent {
 
   constructor(private store: Store<{ app: AppState }>) {
     this.store
-      .select(({ app }) => app.modalOpen)
-      .subscribe((open) => {
-        console.log('open', open);
-        if (open) {
-          this.open();
-        }
-      });
-
-    this.store
       .select(({ app }) => app.modalData)
       .subscribe((data) => {
         console.log('data', data);

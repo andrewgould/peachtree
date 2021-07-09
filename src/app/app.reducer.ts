@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ModalData } from './models/modal-data.model';
-import { showModal } from './app.actions';
+import { hideModal, showModal } from './app.actions';
 
 export interface AppState {
   accountBalance?: number;
@@ -21,6 +21,10 @@ export function appReducer(state, action) {
       ...state,
       modalData: props.data,
       modalOpen: true,
+    })),
+    on(hideModal, (state, props) => ({
+      ...state,
+      modalOpen: false,
     }))
   );
   return reducer(state, action);
