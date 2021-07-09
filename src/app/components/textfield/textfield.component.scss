@@ -19,6 +19,14 @@
 .app-textfield__input-field {
   @include textfield__input-field;
   width: 310px;
+
+  &--error {
+    border-color: $colour_red;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 
 .app-textfield__helper-text-left {
@@ -32,6 +40,6 @@
 .app-textfield__invalid-feedback {
   color: $colour_red;
   font-size: 12px;
-  font-weight: 600;
-  margin: 10px 0;
+  font-weight: 400;
+  margin: 8px 0 6px;
 }

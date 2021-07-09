@@ -33,6 +33,7 @@
           ></app-textfield>
 
           <app-textfield
+            type="number"
             label="Amount"
             placeholder="specify the amount"
             [formControl]="transferAmount"
@@ -40,6 +41,7 @@
             name="transferAmount"
             ngDefaultControl
             helperTextLeft="€"
+            max="5000"
             [pattern]="currencyRegex"
           ></app-textfield>
           <app-submit-button></app-submit-button>
@@ -51,48 +53,57 @@
       <header class="generic-component__header">
         <h2><i class="lni lni-list"></i>Transactions <strong>List</strong></h2>
       </header>
-      <div class="generic-component__inner">
+      <div
+        class="
+          generic-component__inner generic-component__inner--transactions-list
+        "
+      >
         <app-filter></app-filter>
-        <app-transaction-item *ngFor="let transaction of transactions$ | async">
-          <div
-            class="app-transaction-item__colour"
-            data-test-hook="transactionColour"
-            [style.background-color]="transaction.categoryCode"
-          ></div>
-          <div
-            class="app-transaction-item__date"
-            data-test-hook="transactionDate"
+        <div class="app-transaction-items">
+          <app-transaction-item
+            *ngFor="let transaction of transactions$ | async"
           >
-            {{ transaction.dates.valueDate | date: "MMM d" }}
-          </div>
-          <div
-            class="app-transaction-item__details-merchant"
-            data-test-hook="transactionMerchantName"
-          >
-            {{ transaction.merchant.name }}
-          </div>
-          <div
-            class="app-transaction-item__details-type"
-            data-test-hook="transactionType"
-          >
-            {{ transaction.transaction.type }}
-          </div>
-          <div
-            class="app-transaction-item__amount"
-            data-test-hook="transactionAmount"
-            [ngClass]="{
-              'app-transaction-item__amount--credit':
-                transaction.transaction.creditDebitIndicator === 'CRDT',
-              'app-transaction-item__amount--debit':
-                transaction.transaction.creditDebitIndicator === 'DBIT'
-            }"
-          >
-            {{
-              transaction.transaction.amountCurrency.amount
-                | currency: transaction.transaction.amountCurrency.currencyCode
-            }}
-          </div>
-        </app-transaction-item>
+            <div
+              class="app-transaction-item__colour"
+              data-test-hook="transactionColour"
+              [style.background-color]="transaction.categoryCode"
+            ></div>
+            <div
+              class="app-transaction-item__date"
+              data-test-hook="transactionDate"
+            >
+              {{ transaction.dates.valueDate | date: "MMM d" }}
+            </div>
+            <div
+              class="app-transaction-item__details-merchant"
+              data-test-hook="transactionMerchantName"
+            >
+              {{ transaction.merchant.name }}
+            </div>
+            <div
+              class="app-transaction-item__details-type"
+              data-test-hook="transactionType"
+            >
+              {{ transaction.transaction.type }}
+            </div>
+            <div
+              class="app-transaction-item__amount"
+              data-test-hook="transactionAmount"
+              [ngClass]="{
+                'app-transaction-item__amount--credit':
+                  transaction.transaction.creditDebitIndicator === 'CRDT',
+                'app-transaction-item__amount--debit':
+                  transaction.transaction.creditDebitIndicator === 'DBIT'
+              }"
+            >
+              {{
+                transaction.transaction.amountCurrency.amount
+                  | currency
+                    : transaction.transaction.amountCurrency.currencyCode
+              }}
+            </div>
+          </app-transaction-item>
+        </div>
       </div>
     </section>
   </div>

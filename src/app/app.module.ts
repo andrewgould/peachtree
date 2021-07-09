@@ -5,7 +5,6 @@ import { BbUIModule } from 'bb-ui/bb-ui.module';
 import { AppComponent } from './app.component';
 import { TextfieldModule } from './components/textfield/textfield.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LineIcon } from 'react-lineicons';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
   transferAmount = new FormControl('', [
     Validators.required,
     Validators.pattern(this.currencyRegex),
+    Validators.min(0),
+    Validators.max(5000),
   ]);
 
   transactions$: Observable<Transaction[]>;

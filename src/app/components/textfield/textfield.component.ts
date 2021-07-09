@@ -18,6 +18,7 @@ export class TextfieldComponent implements ControlValueAccessor {
   @Input() type = 'text';
   @Input() placeholder = '';
   @Input() pattern: RegExp | undefined;
+  @Input() max: number;
 
   registerOnChange(fn: any): void {}
 

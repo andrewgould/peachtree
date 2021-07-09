@@ -4,13 +4,14 @@ app-transaction-item {
   align-items: center;
   border-bottom: 1px solid $colour_grey-border-light;
   display: flex;
-  margin: 0 -20px;
-  padding: 15px 20px;
+  margin: 0;
+  padding: 15px 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
   &:last-of-type {
     border-bottom-width: 0;
-  }
-  &:hover {
-    background: $colour_grey-border-light;
   }
 
   .merchant-details {

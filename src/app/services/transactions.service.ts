@@ -21,7 +21,13 @@ export class TransactionsService {
     return this.http
       .get<{ data: Transactions }>(this.transactionsUrl, this.httpOptions)
       .pipe(
-        map((data: any) => data),
+        map((transaction: any) =>
+          transaction.sort(
+            (a, b) =>
+              new Date(b.dates.valueDate).getTime() -
+              new Date(a.dates.valueDate).getTime()
+          )
+        ),
         catchError(() => of(mockData.data))
       );
   }
