@@ -12,7 +12,11 @@
         </h2>
       </header>
       <div class="generic-component__inner">
-        <form [formGroup]="makeTransfer" #ngForm="ngForm">
+        <form
+          [formGroup]="makeTransfer"
+          #ngForm="ngForm"
+          (ngSubmit)="handleSubmit($event)"
+        >
           <app-textfield
             label="From Account"
             value="My Personal Account: € 5824.76"
@@ -108,4 +112,5 @@
     </section>
   </div>
 </main>
+<app-modal [ngClass]="{ hidden: !showModal }"></app-modal>
 <app-footer></app-footer>

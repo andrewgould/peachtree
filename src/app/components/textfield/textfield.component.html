@@ -34,7 +34,7 @@
     *ngIf="ngForm.submitted && formControl.errors?.min"
     class="app-textfield__invalid-feedback"
   >
-    The number must be above 0
+    The number must be above {{ formControl.errors.min.min }}
   </p>
   <p
     *ngIf="ngForm.submitted && formControl.errors?.max"

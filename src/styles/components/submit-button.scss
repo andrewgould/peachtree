@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+@mixin submit-button(
+  $background: $colour_orange-button_background,
+  $border: $colour_orange-button_border
+) {
+  background: $background;
+  border: 1px solid $border;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-family: $font-stack;
+  font-size: 14px;
+  height: 38px;
+  padding: 0 12px;
+
+  &:hover {
+    background: $border;
+    border-color: $background;
+  }
+}

@@ -5,9 +5,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { TransactionsService } from './services/transactions.service';
 import { Transaction } from './models/transaction.model';
+import { showModal } from './app.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.reducer';
 
 @Component({
   selector: 'app-root',
@@ -29,20 +32,33 @@ export class AppComponent implements OnInit {
   transferAmount = new FormControl('', [
     Validators.required,
     Validators.pattern(this.currencyRegex),
-    Validators.min(0),
+    Validators.min(500),
     Validators.max(5000),
   ]);
 
   transactions$: Observable<Transaction[]>;
+  showModal: boolean;
+  subs: Subscription[];
 
   constructor(
     private readonly fb: FormBuilder,
-    private transactionsService: TransactionsService
-  ) {}
+    private transactionsService: TransactionsService,
+    private store: Store<{ app: AppState }>
+  ) {
+    this.subs = [];
+  }
 
   ngOnInit() {
     this.createForm();
     this.transactions$ = this.transactionsService.getTransactions();
+    this.subs.push(
+      this.store
+        .select((store) => store.app.modalOpen)
+        .subscribe((update) => {
+          console.log(update);
+          this.showModal = update;
+        })
+    );
   }
 
   createForm() {
@@ -51,5 +67,20 @@ export class AppComponent implements OnInit {
       transferTo: this.transferTo,
       transferAmount: this.transferAmount,
     });
+  }
+
+  handleSubmit(event?): void {
+    if (this.makeTransfer.errors || this.makeTransfer.status === 'INVALID') {
+      return;
+    }
+
+    this.store.dispatch(
+      showModal({
+        data: {
+          amount: this.transferAmount.value,
+          destination: this.transferTo.value,
+        },
+      })
+    );
   }
 }

@@ -40,6 +40,9 @@ app-transaction-item {
 }
 .app-transaction-item__amount {
   font-size: 14px;
+  &::first-letter {
+    padding-right: 0.3em;
+  }
   &--credit {
     color: $colour_green;
   }
