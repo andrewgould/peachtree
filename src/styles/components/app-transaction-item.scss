@@ -1,0 +1,48 @@
+@import "src/styles/variables";
+
+app-transaction-item {
+  align-items: center;
+  border-bottom: 1px solid $colour_grey-border-light;
+  display: flex;
+  margin: 0 -20px;
+  padding: 15px 20px;
+  &:last-of-type {
+    border-bottom-width: 0;
+  }
+  &:hover {
+    background: $colour_grey-border-light;
+  }
+
+  .merchant-details {
+    flex-grow: 1;
+  }
+}
+.app-transaction-item__colour {
+  height: 80px;
+  width: 6px;
+}
+.app-transaction-item__date {
+  font-size: 14px;
+  padding-left: 10px;
+  width: 90px;
+}
+.app-transaction-item__details-merchant {
+  color: $colour_grey-text;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 6px;
+}
+.app-transaction-item__details-type {
+  color: $colour_grey-gunmetal;
+  font-size: 12px;
+  line-height: 12px;
+}
+.app-transaction-item__amount {
+  font-size: 14px;
+  &--credit {
+    color: $colour_green;
+  }
+  &--debit {
+    color: $colour_red;
+  }
+}

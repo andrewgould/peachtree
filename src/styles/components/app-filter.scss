@@ -1,0 +1,23 @@
+@import "src/styles/variables";
+@import "src/styles/components/textfield";
+
+app-filter {
+  display: block;
+  margin-bottom: 1px;
+
+  .input-group {
+    position: relative;
+  }
+  .form-control {
+    @include textfield__input-field;
+  }
+  .input-group-prepend {
+    @include textfield__helper-text-left(42px);
+    color: $colour_grey-magnifier;
+    font-size: 18px;
+
+    + .form-control {
+      padding-left: 56px;
+    }
+  }
+}

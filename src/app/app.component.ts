@@ -3,10 +3,8 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  NgForm,
   Validators,
 } from '@angular/forms';
-import { faList, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { TransactionsService } from './services/transactions.service';
 import { Transaction } from './models/transaction.model';
@@ -21,9 +19,6 @@ export class AppComponent implements OnInit {
   title = 'peachtree';
   currencyRegex: RegExp =
     /^[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$/;
-
-  faList = faList;
-  faWallet = faWallet;
 
   makeTransfer: FormGroup;
   transferFrom = new FormControl({

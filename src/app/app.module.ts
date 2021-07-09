@@ -5,7 +5,7 @@ import { BbUIModule } from 'bb-ui/bb-ui.module';
 import { AppComponent } from './app.component';
 import { TextfieldModule } from './components/textfield/textfield.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LineIcon } from 'react-lineicons';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
     BbUIModule,
     TextfieldModule,
     ReactiveFormsModule,
-    FontAwesomeModule,
     HttpClientModule,
   ],
   providers: [],

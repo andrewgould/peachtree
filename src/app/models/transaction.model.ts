@@ -17,3 +17,7 @@ export interface Transaction {
     type: string;
   };
 }
+
+export interface Transactions {
+  data: Transaction[];
+}

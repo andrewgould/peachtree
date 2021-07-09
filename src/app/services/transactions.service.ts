@@ -4,14 +4,13 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { mockData } from '../mocks/transactions.mocks';
-import { Transaction } from '../models/transaction.model';
+import { Transaction, Transactions } from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionsService {
-  private transactionsUrl =
-    'https://r9vdzv10vd.execute-api.eu-central-1.amazonaws.com/dev/transactions';
+  private transactionsUrl = '/api/transactions';
   private httpOptions = {
     headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }),
   };
@@ -20,9 +19,9 @@ export class TransactionsService {
 
   getTransactions(): Observable<Transaction[]> {
     return this.http
-      .get<{ data: Transaction[] }>(this.transactionsUrl, this.httpOptions)
+      .get<{ data: Transactions }>(this.transactionsUrl, this.httpOptions)
       .pipe(
-        map((data) => data.data),
+        map((data: any) => data),
         catchError(() => of(mockData.data))
       );
   }

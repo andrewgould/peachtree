@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import "src/styles/variables";
 
 .container {
   display: flex;
@@ -39,83 +39,19 @@
     h2 {
       font-size: 18px;
       font-weight: 400;
+      line-height: 18px;
       margin: 0;
 
       strong {
         font-weight: 600;
       }
 
-      fa-icon {
+      .lni {
+        font-size: 22px;
+        line-height: 18px;
         margin-right: 10px;
+        vertical-align: top;
       }
     }
-  }
-
-  app-submit-button {
-    display: block;
-    text-align: right;
-    button {
-      background: $colour_orange-button_background;
-      border: 1px solid $colour_orange-button_border;
-      border-radius: 4px;
-      color: #fff;
-      cursor: pointer;
-      font-family: $font-stack;
-      font-size: 14px;
-      height: 38px;
-      padding: 0 12px;
-
-      &:hover {
-        background: $colour_orange-button_border;
-        border-color: $colour_orange-button_background;
-      }
-    }
-  }
-}
-
-app-transaction-item {
-  align-items: center;
-  border-bottom: 1px solid $colour_grey-border-light;
-  display: flex;
-  margin: 0 -20px;
-  padding: 15px 20px;
-  &:last-of-type {
-    border-bottom-width: 0;
-  }
-  &:hover {
-    background: $colour_grey-border-light;
-  }
-
-  .merchant-details {
-    flex-grow: 1;
-  }
-}
-.app-transaction-item__colour {
-  height: 80px;
-  width: 6px;
-}
-.app-transaction-item__date {
-  font-size: 14px;
-  padding-left: 10px;
-  width: 90px;
-}
-.app-transaction-item__details-merchant {
-  color: $colour_grey-text;
-  font-size: 14px;
-  line-height: 14px;
-  margin-bottom: 6px;
-}
-.app-transaction-item__details-type {
-  color: $colour_grey-gunmetal;
-  font-size: 12px;
-  line-height: 12px;
-}
-.app-transaction-item__amount {
-  font-size: 14px;
-  &--credit {
-    color: $colour_green;
-  }
-  &--debit {
-    color: $colour_red;
   }
 }
