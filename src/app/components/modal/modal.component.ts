@@ -17,7 +17,6 @@ export class ModalComponent {
     this.store
       .select(({ app }) => app.modalData)
       .subscribe((data) => {
-        console.log('data', data);
         this.data = data;
       });
   }

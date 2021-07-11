@@ -23,9 +23,10 @@ export class AppComponent implements OnInit {
   currencyRegex: RegExp =
     /^[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$/;
 
+  balance: number = 5824.76;
   makeTransfer: FormGroup;
   transferFrom = new FormControl({
-    value: 'My Personal Account: € 5824.76',
+    value: `My Personal Account: € ${this.balance}`,
     disabled: true,
   });
   transferTo = new FormControl('', Validators.required);
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit {
     Validators.required,
     Validators.pattern(this.currencyRegex),
     Validators.min(500),
-    Validators.max(5000),
+    Validators.max(this.balance),
   ]);
 
   transactions$: Observable<Transaction[]>;
@@ -55,7 +56,6 @@ export class AppComponent implements OnInit {
       this.store
         .select((store) => store.app.modalOpen)
         .subscribe((update) => {
-          console.log(update);
           this.showModal = update;
         })
     );
